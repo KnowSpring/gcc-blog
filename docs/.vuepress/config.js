@@ -1,46 +1,40 @@
+const headConfig = require('./config/headConfig')
+const pluginsConfig = require('./config/pluginsConfig')
+const navConfig = require('./config/navConfig')
 const moment = require('moment')
 moment.locale('zh-cn')
+// console.log('pluginsConfig', pluginsConfig)
 module.exports = {
-  base: '/docs/',
-  title: '量与变',
-  description: '积累笔记',
-  head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['meta', { name: 'author', content: '官春城' }],
-    ['meta', { name: 'keywords', content: '前端经验源头' }],
-  ],
+  base: '/gcc-blog/',
+  title: '一叶の春',
+  description: '愿时光能缓，愿故人不散',
+  head: headConfig,
+  theme: 'reco',
+  plugins: pluginsConfig,
   themeConfig: {
+    huawei: true,
+    // 博客配置
     logo: '/assets/img/logo.png',
+    authorAvatar: '/assets/avatar.png',
+    search: true,
+    searchMaxSuggestions: 10,
     lastUpdated: '更新时间',
-    nav: [
-      { text: 'Home', link: '/' },
-      {
-        text: 'External',
-        link: 'https://google.com',
-        target: '_self',
-        rel: '',
+    author: '',
+    record: 'xxxx',
+    startYear: '2019',
+    subSidebar: 'auto',
+    type: 'blog',
+    blogConfig: {
+      category: {
+        location: 2, // 在导航栏菜单中所占的位置，默认2
+        text: '分类', // 默认文案 “分类”
       },
-      { text: 'Guide', link: '/guide/', target: '_blank' },
-      {
-        text: 'Languages',
-        items: [
-          {
-            text: 'Chinese',
-            items: [
-              { text: '广州', link: '/language/chinese/' },
-              { text: '揭阳', link: '/language/jjjj/' },
-            ],
-          },
-          {
-            text: 'Japanese',
-            items: [
-              { text: '11', link: '/language/chinese/' },
-              { text: '22', link: '/language/jjjj/' },
-            ],
-          },
-        ],
+      tag: {
+        location: 3, // 在导航栏菜单中所占的位置，默认3
+        text: '标签', // 默认文案 “标签”
       },
-    ],
+    },
+    nav: navConfig,
     // sidebar: [
     //   {
     //     title: 'Group 1', // 必要的
@@ -57,13 +51,23 @@ module.exports = {
     //     initialOpenGroupIndex: -1, // 可选的, 默认值是 0
     //   },
     // ],
-  },
-  plugins: [
-    '@vuepress/last-updated',
-    {
-      transformer: (timestamp) => {
-        return moment(timestamp).fromNow('LLLL')
+    friendLink: [
+      {
+        title: 'vuepress-theme-reco',
+        desc: 'A simple and beautiful vuepress Blog & Doc theme.',
+        logo: 'https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png',
+        link: 'https://vuepress-theme-reco.recoluan.com',
       },
+      {
+        title: '午后南杂',
+        desc: 'Enjoy when you can, and endure when you must.',
+        email: 'recoluan@qq.com',
+        link: 'https://www.recoluan.com',
+      },
+      // ...
+    ],
+    markdown: {
+      lineNumbers: true,
     },
-  ],
+  },
 }
